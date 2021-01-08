@@ -1,7 +1,7 @@
-import { Heading } from '@chakra-ui/react';
+import { Header } from '@/components/header';
 
 function Home() {
-  return <Heading>Marko Djordjevic</Heading>;
+  return <Header />;
 }
 
 export default Home;
