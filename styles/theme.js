@@ -20,6 +20,15 @@ const theme = extendTheme({
     '5xl': 48,
     '6xl': 64,
   },
+  fonts: {
+    heading:
+      'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+    body:
+      'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+  },
+  fontWeights: {
+    bold: 800,
+  },
 });
 
 export default theme;

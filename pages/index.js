@@ -1,7 +1,12 @@
+import { Layout } from '@/components/layout';
 import { Header } from '@/components/header';
 
 function Home() {
-  return <Header />;
+  return (
+    <Layout>
+      <Header />
+    </Layout>
+  );
 }
 
 export default Home;

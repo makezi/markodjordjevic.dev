@@ -1,10 +1,11 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 
+import { Layout } from '@/components/layout';
 import { Header } from '@/components/header';
 
 function About() {
   return (
-    <Box>
+    <Layout>
       <Header />
       <Container maxW="2xl">
         <Stack spacing="6">
@@ -37,7 +38,7 @@ function About() {
           </Text>
         </Stack>
       </Container>
-    </Box>
+    </Layout>
   );
 }
 
