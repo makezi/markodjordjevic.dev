@@ -18,15 +18,16 @@ function NavLink({ href, emote, children }) {
     <NextLink href={href}>
       <Link
         href={href}
-        fontWeight="medium"
         py={2}
         px={4}
-        fontSize="md"
+        fontFamily="heading"
+        fontWeight="medium"
+        letterSpacing="-1px"
         display="flex"
         alignItems="center"
-        role="group"
         color={activeLink ? 'black' : 'gray.500'}
         transition="0.15s all ease"
+        role="group"
         _hover={{ textDecoration: 'none', color: 'black' }}
         _focus={{ outline: 'none' }}
       >
@@ -49,10 +50,10 @@ function Navigation() {
   return (
     <Flex>
       <NavLink href="/blog" emote="📝">
-        Blog
+        blog
       </NavLink>
       <NavLink href="/" emote="💁🏻‍♂️">
-        About
+        about
       </NavLink>
     </Flex>
   );
@@ -61,10 +62,10 @@ function Navigation() {
 function Header() {
   return (
     <Box as="header">
-      <Container maxW="4xl" px={8} py={16}>
+      <Container maxW="4xl" px={8} py={8}>
         <Flex alignItems="center">
-          <Heading size="md" as="h1">
-            Marko Djordjevic
+          <Heading size="lg" as="h1">
+            marko djordjevic
           </Heading>
           <Spacer />
           <Navigation />

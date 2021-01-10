@@ -22,12 +22,19 @@ const theme = extendTheme({
   },
   fonts: {
     heading:
-      'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+      'Poppins,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
     body:
-      'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
   },
   fontWeights: {
     bold: 800,
+  },
+  components: {
+    Heading: {
+      baseStyle: {
+        letterSpacing: '-1px',
+      },
+    },
   },
 });
 
