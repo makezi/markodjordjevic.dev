@@ -61,8 +61,15 @@ function Navigation() {
 
 function Header() {
   return (
-    <Box as="header">
-      <Container maxW="4xl" px={8} py={8}>
+    <Box
+      as="header"
+      position="sticky"
+      top="0"
+      zIndex="sticky"
+      sx={{ backdropFilter: 'blur(20px)' }}
+      bg="whiteAlpha.700"
+    >
+      <Container maxW="4xl" p={[4, 4, 8]}>
         <Flex alignItems="center">
           <Heading size="lg" as="h1">
             marko djordjevic
