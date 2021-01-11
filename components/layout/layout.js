@@ -1,5 +1,8 @@
 import NextHead from 'next/head';
 import GoogleFonts from 'next-google-fonts';
+import { Container } from '@chakra-ui/react';
+
+import { Header } from '@/components/header';
 
 function Head({ children, title }) {
   return (
@@ -23,7 +26,10 @@ function Layout({ children }) {
   return (
     <>
       <Head title="Marko Djordjevic Portfolio" />
-      {children}
+      <Header />
+      <Container maxW="2xl" py={10}>
+        {children}
+      </Container>
     </>
   );
 }
