@@ -34,6 +34,11 @@ const theme = extendTheme({
       baseStyle: {
         letterSpacing: '-1px',
       },
+      sizes: {
+        '3xl': {
+          fontSize: ['4xl', '5xl', '6xl'],
+        },
+      },
     },
   },
 });

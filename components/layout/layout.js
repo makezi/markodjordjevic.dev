@@ -27,7 +27,7 @@ function Layout({ children }) {
     <>
       <Head title="Marko Djordjevic Portfolio" />
       <Header />
-      <Container maxW="2xl" py={10}>
+      <Container maxW="2xl" py={[6, 6, 10]}>
         {children}
       </Container>
     </>
