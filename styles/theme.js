@@ -4,9 +4,9 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        fontSize: 'lg',
-      },
-    },
+        fontSize: 'lg'
+      }
+    }
   },
   fontSizes: {
     xs: 12,
@@ -18,29 +18,29 @@ const theme = extendTheme({
     '3xl': 30,
     '4xl': 36,
     '5xl': 48,
-    '6xl': 64,
+    '6xl': 64
   },
   fonts: {
     heading:
       'Poppins,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
     body:
-      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif'
   },
   fontWeights: {
-    bold: 800,
+    bold: 800
   },
   components: {
     Heading: {
       baseStyle: {
-        letterSpacing: '-1px',
+        letterSpacing: '-1px'
       },
       sizes: {
         '3xl': {
-          fontSize: ['4xl', '5xl', '6xl'],
-        },
-      },
-    },
-  },
+          fontSize: ['4xl', '5xl', '6xl']
+        }
+      }
+    }
+  }
 });
 
 export default theme;

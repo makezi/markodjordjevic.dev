@@ -3,8 +3,8 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@/components', './components']],
-      },
-    },
-  },
+        map: [['@/components', './components']]
+      }
+    }
+  }
 };
