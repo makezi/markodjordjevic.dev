@@ -2554,10 +2554,10 @@ eslint-config-airbnb@^18.2.1:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
-eslint-config-makezi@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-makezi/-/eslint-config-makezi-1.0.2.tgz#b77803364e32755b6a2c0fd2e27fc0c9a603b220"
-  integrity sha512-GoHM2uui/N7x3tx6BZLfk8rvJbYvDPFZGGHE9VzGB61zUj/766Pg7XnajkX6AErJ1aUCbtv06ci4QaNXf2a9Jg==
+eslint-config-makezi@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-makezi/-/eslint-config-makezi-1.0.3.tgz#4dcf54c75c29131f3a604bae519d5a3ad4213652"
+  integrity sha512-XJS1Gh54nqdFQzkqb4yvDRlb0M8KmTZolrBiE+ed0AEi0SAQNeK+Tdygqi4seiqgUYtFh155a/OLPSifm6nyog==
 
 eslint-config-prettier@^7.1.0:
   version "7.1.0"
