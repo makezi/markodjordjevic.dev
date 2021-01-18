@@ -135,7 +135,7 @@ function Header() {
         width="100%"
         alignItems="center"
       >
-        <Heading size="lg" as="h1">
+        <Heading size="md" as="h1">
           marko djordjevic
         </Heading>
         <Spacer />

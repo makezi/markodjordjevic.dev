@@ -4,7 +4,8 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        fontSize: 'lg'
+        fontSize: 'lg',
+        lineHeight: 'tall'
       }
     }
   },
@@ -19,6 +20,9 @@ const theme = extendTheme({
     '4xl': 36,
     '5xl': 48,
     '6xl': 64
+  },
+  lineHeights: {
+    tall: 1.7
   },
   fonts: {
     heading:
@@ -37,6 +41,9 @@ const theme = extendTheme({
       sizes: {
         '3xl': {
           fontSize: ['4xl', '5xl', '6xl']
+        },
+        md: {
+          fontSize: ['xl', '2xl', '3xl']
         }
       }
     }
