@@ -6,18 +6,18 @@ import {
   Link,
   Spacer,
   Text,
-  Button,
-  Slide,
-  Portal,
+  Flex,
+  IconButton,
   Stack,
   useDisclosure,
-  useBreakpoint
+  Drawer,
+  DrawerContent,
+  DrawerBody,
+  DrawerOverlay
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-
-const HEADER_HEIGHT = '100px';
 
 function NavLink({ href, emote, children }) {
   const { asPath } = useRouter();
@@ -56,64 +56,76 @@ function NavLink({ href, emote, children }) {
   );
 }
 
-function Navigation() {
+function MobileNavigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const breakpoint = useBreakpoint();
-
-  React.useEffect(() => {
-    if (breakpoint !== 'base' && breakpoint !== 'sm') {
-      onClose();
-    }
-  }, [breakpoint, onClose]);
-
-  const onToggle = () => (isOpen ? onClose() : onOpen());
+  const btnRef = React.useRef();
 
   return (
-    <>
-      <Box display={['block', 'block', 'none']}>
-        <Button variant="ghost" onClick={onToggle}>
-          {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
-        </Button>
-        <MobileMenu isOpen={isOpen} />
-      </Box>
-      <Box display={['none', 'none', 'block']}>
-        <Stack direction="row">
-          <NavLink href="/blog" emote="📝">
-            blog
-          </NavLink>
-          <NavLink href="/" emote="💁🏻‍♂️">
-            about
-          </NavLink>
-        </Stack>
-      </Box>
-    </>
+    <Box display={['block', 'block', 'none']}>
+      <IconButton
+        ref={btnRef}
+        variant="ghost"
+        aria-label="Open Navigation Menu"
+        minWidth={0}
+        icon={<HiMenuAlt3 size={30} />}
+        onClick={onOpen}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerContent>
+          <DrawerBody py={6} px={4}>
+            <Stack spacing={6}>
+              <Flex justifyContent="flex-end">
+                <IconButton
+                  variant="ghost"
+                  aria-label="Close Navigation Menu"
+                  minWidth={0}
+                  icon={<HiX size={30} />}
+                  onClick={onClose}
+                />
+              </Flex>
+              <Stack align="flex-end" spacing={4}>
+                <NavLink href="/blog" emote="📝">
+                  blog
+                </NavLink>
+                <NavLink href="/" emote="💁🏻‍♂️">
+                  about
+                </NavLink>
+              </Stack>
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+        <DrawerOverlay />
+      </Drawer>
+    </Box>
   );
 }
 
-function MobileMenu({ isOpen }) {
-  if (!isOpen) {
-    return null;
-  }
-
+function DesktopNavigation() {
   return (
-    <Portal>
-      <Slide
-        direction="right"
-        in
-        style={{ zIndex: 'modal', top: HEADER_HEIGHT }}
-      >
-        <Box bg="white" height="100%" py={6}>
-          <Stack align="center" spacing={4}>
-            <NavLink href="/blog" emote="📝">
-              blog
-            </NavLink>
-            <NavLink href="/" emote="💁🏻‍♂️">
-              about
-            </NavLink>
-          </Stack>
-        </Box>
-      </Slide>
-    </Portal>
+    <Box display={['none', 'none', 'block']}>
+      <Stack direction="row">
+        <NavLink href="/blog" emote="📝">
+          blog
+        </NavLink>
+        <NavLink href="/" emote="💁🏻‍♂️">
+          about
+        </NavLink>
+      </Stack>
+    </Box>
+  );
+}
+
+function Navigation() {
+  return (
+    <>
+      <MobileNavigation />
+      <DesktopNavigation />
+    </>
   );
 }
 
@@ -121,17 +133,19 @@ function Header() {
   return (
     <Box
       as="header"
-      position="sticky"
-      top="0"
+      position="fixed"
+      top={0}
+      left={0}
+      right={0}
       zIndex="sticky"
-      sx={{ backdropFilter: 'blur(20px)' }}
+      sx={{ backdropFilter: 'blur(10px)' }}
       bg="whiteAlpha.700"
     >
       <Container
         maxW="4xl"
         px={[4, 4, 8]}
-        height={HEADER_HEIGHT}
         display="flex"
+        height="100px"
         width="100%"
         alignItems="center"
       >
