@@ -4,7 +4,7 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        fontSize: 'lg',
+        fontSize: ['md', 'lg'],
         lineHeight: 'tall'
       }
     }
