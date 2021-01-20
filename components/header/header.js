@@ -7,7 +7,6 @@ import {
   Spacer,
   Text,
   Flex,
-  IconButton,
   Stack,
   useDisclosure,
   Drawer,
@@ -18,6 +17,8 @@ import {
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+
+import { IconButton } from '@/components/icon-button';
 
 function NavLink({ href, emote, children }) {
   const { asPath } = useRouter();
@@ -64,9 +65,7 @@ function MobileNavigation() {
     <Box display={['block', 'block', 'none']}>
       <IconButton
         ref={btnRef}
-        variant="ghost"
         aria-label="Open Navigation Menu"
-        minWidth={0}
         icon={<HiMenuAlt3 size={30} />}
         onClick={onOpen}
       />
@@ -81,9 +80,7 @@ function MobileNavigation() {
             <Stack spacing={6}>
               <Flex justifyContent="flex-end">
                 <IconButton
-                  variant="ghost"
                   aria-label="Close Navigation Menu"
-                  minWidth={0}
                   icon={<HiX size={30} />}
                   onClick={onClose}
                 />
@@ -144,8 +141,8 @@ function Header() {
       <Container
         maxW="4xl"
         px={[4, 4, 8]}
+        py={6}
         display="flex"
-        height="100px"
         width="100%"
         alignItems="center"
       >
