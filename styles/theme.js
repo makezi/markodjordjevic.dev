@@ -1,13 +1,20 @@
 import { extendTheme } from '@chakra-ui/react';
+import { mode } from '@chakra-ui/theme-tools';
 
 const theme = extendTheme({
+  initialColorMode: 'dark',
   styles: {
-    global: {
+    global: (props) => ({
       'html, body': {
         fontSize: ['md', 'lg'],
-        lineHeight: 'tall'
+        lineHeight: 'tall',
+        color: mode('gray.800', 'gray.300')(props),
+        bg: mode('white', 'darkBg')(props)
       }
-    }
+    })
+  },
+  colors: {
+    darkBg: '#0e1218'
   },
   fontSizes: {
     xs: 12,

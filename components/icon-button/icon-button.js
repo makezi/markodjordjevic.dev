@@ -5,7 +5,6 @@ export function IconButton(props) {
     <ChakraIconButton
       variant="ghost"
       minWidth={0}
-      _focus={{ outline: 'none', bg: 'transparent' }}
       aria-label="Close Navigation Menu"
       {...props}
     />
