@@ -3,14 +3,15 @@ import {
   Box,
   Container,
   Heading,
-  Link,
+  Button,
   Spacer,
   Text,
-  Flex,
   Stack,
   Drawer,
   DrawerContent,
   DrawerBody,
+  DrawerHeader,
+  DrawerFooter,
   DrawerOverlay,
   useDisclosure,
   useColorMode,
@@ -22,39 +23,28 @@ import { HiMenuAlt3, HiX, HiMoon, HiOutlineMoon } from 'react-icons/hi';
 
 import { IconButton } from '@/components/icon-button';
 
-function NavLink({ href, emote, children }) {
+function NavLink({ href, ...props }) {
   const activeColor = useColorModeValue('gray.800', 'gray.300');
+  const activeBg = useColorModeValue('gray.100', 'whiteAlpha.200');
   const { asPath } = useRouter();
   const activeLink = asPath === href;
 
   return (
     <NextLink href={href}>
-      <Link
+      <Button
+        as="a"
         href={href}
-        py={2}
-        px={[0, 0, 4]}
+        variant="ghost"
         fontFamily="heading"
-        fontSize={['2xl', '2xl', 'lg']}
+        fontSize={['xl', 'xl', 'lg']}
+        width={['100%', '100%', 'auto']}
         fontWeight="medium"
         letterSpacing="-1px"
-        display="flex"
-        alignItems="center"
         color={activeLink ? activeColor : 'gray.500'}
-        transition="0.15s all ease"
-        role="group"
-        _hover={{ textDecoration: 'none', color: activeColor }}
-      >
-        <Text
-          pr={2}
-          fontSize="3xl"
-          opacity={activeLink ? 1 : 0}
-          _groupHover={{ opacity: 1 }}
-          transition="0.15s all ease"
-        >
-          {emote}
-        </Text>
-        {children}
-      </Link>
+        bg={activeLink ? activeBg : 'transparent'}
+        _hover={{ color: activeColor, bg: activeBg }}
+        {...props}
+      />
     </NextLink>
   );
 }
@@ -63,17 +53,12 @@ function ToggleColorModeButton() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <header>
-      <IconButton
-        // variant="solid"
-        onClick={toggleColorMode}
-        p={2}
-        aria-label="Toggle Dark Mode"
-      >
+      <IconButton onClick={toggleColorMode} p={2} aria-label="Toggle Dark Mode">
         <Text fontSize="2xl">
           {colorMode === 'light' ? (
-            <HiOutlineMoon size={24} />
+            <HiOutlineMoon size={30} />
           ) : (
-            <HiMoon size={24} />
+            <HiMoon size={30} />
           )}
         </Text>
       </IconButton>
@@ -100,29 +85,31 @@ function MobileNavigation() {
         onClose={onClose}
         finalFocusRef={btnRef}
       >
-        <DrawerContent>
-          <DrawerBody py={6} px={4} bg={bg}>
-            <Stack spacing={6}>
-              <Flex justifyContent="flex-end">
-                <IconButton
-                  aria-label="Close Navigation Menu"
-                  icon={<HiX size={30} />}
-                  onClick={onClose}
-                />
-              </Flex>
-              <Stack align="flex-end" spacing={4}>
-                <NavLink href="/blog" emote="📝">
-                  blog
-                </NavLink>
-                <NavLink href="/" emote="💁🏻‍♂️">
-                  about
-                </NavLink>
-              </Stack>
-              <Flex justifyContent="flex-end">
-                <ToggleColorModeButton />
-              </Flex>
+        <DrawerContent height="100% !important">
+          <DrawerHeader
+            bg={bg}
+            py={6}
+            px={4}
+            display="flex"
+            justifyContent="flex-end"
+          >
+            <IconButton
+              aria-label="Close Navigation Menu"
+              icon={<HiX size={30} />}
+              onClick={onClose}
+            />
+          </DrawerHeader>
+
+          <DrawerBody py={10} px={4} bg={bg}>
+            <Stack align="flex-end" spacing={4}>
+              <NavLink href="/blog">blog</NavLink>
+              <NavLink href="/">about</NavLink>
             </Stack>
           </DrawerBody>
+
+          <DrawerFooter py={6} px={4} bg={bg}>
+            <ToggleColorModeButton />
+          </DrawerFooter>
         </DrawerContent>
         <DrawerOverlay />
       </Drawer>
@@ -133,13 +120,11 @@ function MobileNavigation() {
 function DesktopNavigation() {
   return (
     <Box display={['none', 'none', 'block']}>
-      <Stack direction="row" spacing={2} align="center">
-        <NavLink href="/blog" emote="📝">
-          blog
-        </NavLink>
-        <NavLink href="/" emote="💁🏻‍♂️">
-          about
-        </NavLink>
+      <Stack direction="row" spacing={8} align="center">
+        <Stack direction="row" spacing={4} align="center">
+          <NavLink href="/blog">blog</NavLink>
+          <NavLink href="/">about</NavLink>
+        </Stack>
         <ToggleColorModeButton />
       </Stack>
     </Box>
@@ -156,15 +141,13 @@ function Navigation() {
 }
 
 function Header() {
-  const bg = useColorModeValue('whiteAlpha.700', 'darkBg');
+  const bg = useColorModeValue('whiteAlpha.800', 'darkBg');
 
   return (
     <Box
       as="header"
-      position="fixed"
+      position="sticky"
       top={0}
-      left={0}
-      right={0}
       zIndex="sticky"
       sx={{ backdropFilter: 'blur(10px)' }}
       bg={bg}

@@ -24,7 +24,7 @@ function Head({ children, title }) {
 
 function Layout({ children }) {
   return (
-    <Box position="relative" pt="100px" minHeight="100vh">
+    <Box position="relative" minHeight="100vh">
       <Head title="Marko Djordjevic Portfolio" />
       <Header />
       <Container maxW="2xl" py={[6, 6, 10]}>
