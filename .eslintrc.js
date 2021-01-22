@@ -13,7 +13,6 @@ module.exports = {
     }
   },
   rules: {
-    'import/group-exports': 2,
-    'import/exports-last': 2
+    'import/group-exports': 2
   }
 };
