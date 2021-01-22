@@ -170,7 +170,7 @@ function Header() {
         alignItems="center"
       >
         <Heading size="md" as="h1">
-          marko djordjevic
+          Marko Djordjevic
         </Heading>
         <Spacer />
         <Navigation />

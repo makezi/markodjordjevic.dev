@@ -6,6 +6,7 @@ const theme = extendTheme({
     global: (props) => ({
       'html, body': {
         fontSize: ['md', 'lg'],
+        letterSpacing: 'tight',
         lineHeight: 'tall',
         color: mode('gray.800', 'gray.300')(props),
         bg: mode('white', 'darkBg')(props)
@@ -37,19 +38,33 @@ const theme = extendTheme({
       'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif'
   },
   fontWeights: {
-    bold: 800
+    bold: 700
   },
   components: {
     Heading: {
       baseStyle: {
-        letterSpacing: '-1px'
+        letterSpacing: 'tight'
       },
       sizes: {
         '3xl': {
-          fontSize: ['4xl', '5xl', '6xl']
+          fontSize: ['4xl', '5xl', '6xl'],
+          lineHeight: 'short'
+        },
+        '2xl': {
+          fontSize: ['3xl', '4xl', '5xl'],
+          lineHeight: 'short'
+        },
+        xl: {
+          fontSize: ['2xl', '3xl', '4xl'],
+          lineHeight: 'short'
+        },
+        lg: {
+          fontSize: ['xl', '2xl', '3xl']
         },
         md: {
-          fontSize: ['xl', '2xl', '3xl']
+          fontSize: ['lg', 'xl', '2xl'],
+          lineHeight: 'base',
+          fontWeight: 600
         }
       }
     }

@@ -1,0 +1,56 @@
+---
+title: Test Post
+summary: Learn how to fetch a user's metadata from Auth0 using a custom middleware in Next.js API routes.
+date: '2020-10-03'
+author: Marko Djordjevic
+keywords:
+  - react
+  - nextjs
+  - auth0
+banner: '/static/posts/how-to-fetch-user-metadata-from-auth0-in-nextjs/banner.png'
+---
+
+If you've ever tried to use Auth0 as your authentication service in Next.js
+project, you would have been directed to use Auth0's `nextjs-auth0` library.
+However, even though it handles everything an authentication service needs to
+handle, it falls short in one aspect: fetching the user metadata of a user.
+Unfortunately, it seems that this is outside the scope of this
+[module](https://www.notion.so/How-to-fetch-user-metadata-from-Auth0-in-Next-js-3652b7069d5e4d9fa0dfa2327accec21#0a111047f0804133938938f0f1860f76)
+
+## Why is this important?
+
+The user metadata is used to store the user's preferences when using your
+application. This could be for instance, a boolean flag that indicates if the
+user wishes to receive email/SMS notifications:
+
+```json
+"user_metadata": {
+  "notifications_enabled": 1
+}
+```
+
+## Adding a middleware
+
+```js:pages/api/me.js
+const MANAGEMENT_API_URL = `https://${process.env.AUTH0_DOMAIN}/api/v2`;
+
+async function me(req, res) {
+  // Omitted ...
+}
+
+function withUserMetadata(handler) {
+  return async (req, res) => {
+    try {
+      // First we need to get the user JSON response to be merged with
+      // user_metadata JSON
+      const userJson = res.json;
+
+      // Retrieve the user access token via valid session
+      const session = await auth0.getSession(req);
+      const { accessToken, user } = session;
+
+      // DO OTHER CODE
+    } catch (error) {}
+  };
+}
+```

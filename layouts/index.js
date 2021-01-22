@@ -11,8 +11,8 @@ export default function BlogLayout({ children, frontMatter }) {
 
   return (
     <Layout>
-      <Stack spacing={6}>
-        <Heading size="3xl">{capitalizedTitle}</Heading>
+      <Stack spacing={12}>
+        <Heading size="2xl">{capitalizedTitle}</Heading>
         {children}
       </Stack>
     </Layout>
