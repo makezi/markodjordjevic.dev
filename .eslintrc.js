@@ -6,9 +6,14 @@ module.exports = {
         map: [
           ['@/components', './components'],
           ['@/styles', './styles'],
-          ['@/layouts', './layouts']
+          ['@/layouts', './layouts'],
+          ['@/utils', './utils']
         ]
       }
     }
+  },
+  rules: {
+    'import/group-exports': 2,
+    'import/exports-last': 2
   }
 };

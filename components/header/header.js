@@ -22,12 +22,21 @@ import { useRouter } from 'next/router';
 import { HiMenuAlt3, HiX, HiMoon, HiOutlineMoon } from 'react-icons/hi';
 
 import { IconButton } from '@/components/icon-button';
+import { startsWith } from '@/utils/starts-with';
+
+function useActiveLink(href) {
+  const { pathname } = useRouter();
+  const isCurrent = pathname === href;
+  const isPartiallyCurrent = href !== '/' && startsWith(pathname, href);
+  const isActiveLink = isCurrent || isPartiallyCurrent;
+
+  return isActiveLink;
+}
 
 function NavLink({ href, ...props }) {
   const activeColor = useColorModeValue('gray.800', 'gray.300');
   const activeBg = useColorModeValue('gray.100', 'whiteAlpha.200');
-  const { asPath } = useRouter();
-  const activeLink = asPath === href;
+  const isActiveLink = useActiveLink(href);
 
   return (
     <NextLink href={href}>
@@ -40,8 +49,8 @@ function NavLink({ href, ...props }) {
         width={['100%', '100%', 'auto']}
         fontWeight="medium"
         letterSpacing="-1px"
-        color={activeLink ? activeColor : 'gray.500'}
-        bg={activeLink ? activeBg : 'transparent'}
+        color={isActiveLink ? activeColor : 'gray.500'}
+        bg={isActiveLink ? activeBg : 'transparent'}
         _hover={{ color: activeColor, bg: activeBg }}
         {...props}
       />
