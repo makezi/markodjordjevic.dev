@@ -5,7 +5,8 @@ module.exports = {
       alias: {
         map: [
           ['@/components', './components'],
-          ['@/styles', './styles']
+          ['@/styles', './styles'],
+          ['@/layouts', './layouts']
         ]
       }
     }

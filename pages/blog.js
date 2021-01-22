@@ -6,7 +6,7 @@ function Home() {
   return (
     <Layout>
       <Stack spacing="6">
-        <Heading size="3xl">📝 Blog</Heading>
+        <Heading size="3xl">Blog</Heading>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis
           sapien purus. Vestibulum ullamcorper, orci eget mattis dapibus, mi
