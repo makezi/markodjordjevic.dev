@@ -6,7 +6,6 @@ const theme = extendTheme({
     global: (props) => ({
       'html, body': {
         fontSize: ['md', 'lg'],
-        letterSpacing: 'tight',
         lineHeight: 'tall',
         color: mode('gray.800', 'gray.300')(props),
         bg: mode('white', 'darkBg')(props)

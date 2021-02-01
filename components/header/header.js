@@ -111,8 +111,8 @@ function MobileNavigation() {
 
           <DrawerBody py={10} px={4} bg={bg}>
             <Stack align="flex-end" spacing={4}>
-              <NavLink href="/blog">blog</NavLink>
-              <NavLink href="/">about</NavLink>
+              <NavLink href="/blog">Blog</NavLink>
+              <NavLink href="/">About</NavLink>
             </Stack>
           </DrawerBody>
 
@@ -131,8 +131,8 @@ function DesktopNavigation() {
     <Box display={['none', 'none', 'block']}>
       <Stack direction="row" spacing={8} align="center">
         <Stack direction="row" spacing={4} align="center">
-          <NavLink href="/blog">blog</NavLink>
-          <NavLink href="/">about</NavLink>
+          <NavLink href="/blog">Blog</NavLink>
+          <NavLink href="/">About</NavLink>
         </Stack>
         <ToggleColorModeButton />
       </Stack>

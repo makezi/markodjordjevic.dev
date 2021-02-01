@@ -1,21 +1,30 @@
 ---
 title: how to fetch user metadata from auth0 in next.js
 summary: Learn how to fetch a user's metadata from Auth0 using a custom middleware in Next.js API routes.
-date: '2020-10-03'
+date: "2020-10-03"
 author: Marko Djordjevic
 keywords:
   - react
   - nextjs
   - auth0
-banner: '/static/posts/how-to-fetch-user-metadata-from-auth0-in-nextjs/banner.png'
+banner: "/posts/how-to-fetch-user-metadata-from-auth0-in-nextjs/banner.png"
 ---
 
-If you've ever tried to use Auth0 as your authentication service in Next.js
+import NextImage from "next/image";
+
+<NextImage
+  src="/posts/how-to-fetch-user-metadata-from-auth0-in-nextjs/banner.jpg"
+  width={1920}
+  height={1280}
+  priority
+/>
+
+If you've ever tried to use Auth0 as your authentication service in a Next.js
 project, you would have been directed to use Auth0's `nextjs-auth0` library.
 However, even though it handles everything an authentication service needs to
 handle, it falls short in one aspect: fetching the user metadata of a user.
-Unfortunately, it seems that this is outside the scope of this
-[module](https://www.notion.so/How-to-fetch-user-metadata-from-Auth0-in-Next-js-3652b7069d5e4d9fa0dfa2327accec21#0a111047f0804133938938f0f1860f76)
+Unfortunately, it seems that this outside the scope of this module:
+[nextjs-auth0](https://github.com/auth0/nextjs-auth0/issues/45).
 
 ## Why is this important?
 
@@ -29,9 +38,48 @@ user wishes to receive email/SMS notifications:
 }
 ```
 
+In one particular case of an application I was working, the application was an
+ecommerce shop in which user's can select a specific store to retrieve
+deliveries from. We would store their selected store as `store_id` in which our
+API's would use later on.
+
+Allowing users to receive this information on login is critical as the rest of
+the application depended on it, i.e. showing products from that specific store
+on load/server side.
+
+Auth0 suggests reading user's metadata via [auth0 rules](https://auth0.com/docs/rules/metadata).
+However, in the previous case, this is an issue as the rules are only ran AFTER
+([https://auth0.com/docs/rules](https://auth0.com/docs/rules)) the user has
+authenticated/logged in for the first time. This means that this data isn't
+available to the user on their first login after signup for example - they
+would need to relog back in for the rule to run and append their user metadata
+to the access token/json response.
+
+So how would we go about solving this? The solution is to attach a middleware to
+the API route that's fetching the user profile (if following along
+`nextjs-auth0` tutorial, it would be under `/pages/api/me.js`).
+
+## Configure management api/scopes?
+
+Need this section first?
+
 ## Adding a middleware
 
-```js:pages/api/me.js
+We can wrap nextjs api routes with a middleware which modifies the
+request/response handler, similar to that of a higher order function.
+
+**CODE SAMPLE HERE**
+
+The middleware needs to do the following:
+
+1. Check to see if a valid user session exists and if so, get their access token
+2. Using said access token, retrieve their user's metadata via the Auth0
+   Management API. This can be done via the `node-auth0` library or the
+   Management API URL directly.
+
+- NOTE: need to check user scopes
+
+```js
 const MANAGEMENT_API_URL = `https://${process.env.AUTH0_DOMAIN}/api/v2`;
 
 async function me(req, res) {
@@ -54,3 +102,9 @@ function withUserMetadata(handler) {
   };
 }
 ```
+
+## Conclusion
+
+Although not officially supported in the `nextjs-auth0` library, we still 
+managed to retrieve the `user_metadata` via Auth0's management API via API 
+middlewares. Hopefully this helps! Good luck!
