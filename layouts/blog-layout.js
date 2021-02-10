@@ -33,7 +33,6 @@ function BlogInfo({ author, date, keywords, readingTime }) {
 }
 
 export default function BlogLayout({ children, frontMatter }) {
-  console.log('frontMatter', frontMatter);
   const { title } = frontMatter;
   const capitalizedTitle = capitalizeTitle(title);
 

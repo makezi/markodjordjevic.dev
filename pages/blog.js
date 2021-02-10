@@ -10,7 +10,7 @@ import { frontMatter as blogPosts } from './blog/**/*.mdx';
 function Home() {
   return (
     <Layout>
-      <Title>Blog</Title>
+      <Title pb={12}>Blog</Title>
       <Stack spacing={8}>
         {blogPosts.map((blogPost) => (
           <BlogPost key={blogPost.title} {...blogPost} />

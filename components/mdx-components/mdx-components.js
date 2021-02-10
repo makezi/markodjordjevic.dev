@@ -5,8 +5,7 @@ import {
   Link,
   OrderedList,
   UnorderedList,
-  ListItem,
-  Container
+  ListItem
 } from '@chakra-ui/react';
 
 function Title(props) {
