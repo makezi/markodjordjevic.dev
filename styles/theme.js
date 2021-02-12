@@ -5,9 +5,10 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       'html, body': {
+        fontFamily: 'body',
         fontSize: ['md', 'lg'],
         lineHeight: 'tall',
-        color: mode('gray.800', 'gray.300')(props),
+        color: mode('gray.700', 'gray.300')(props),
         bg: mode('white', 'darkBg')(props)
       }
     })
@@ -32,13 +33,11 @@ const theme = extendTheme({
   },
   fonts: {
     heading:
-      'Poppins,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
+      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
     body:
       'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif'
   },
-  fontWeights: {
-    bold: 700
-  },
+
   components: {
     Heading: {
       baseStyle: {
