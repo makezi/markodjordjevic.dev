@@ -5,8 +5,8 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       'html, body': {
-        fontFamily: 'body',
         fontSize: ['md', 'lg'],
+        fontWeight: 'body',
         lineHeight: 'tall',
         color: mode('gray.700', 'gray.300')(props),
         bg: mode('white', 'darkBg')(props)
@@ -14,6 +14,7 @@ const theme = extendTheme({
     })
   },
   colors: {
+    primary: '#f43f5e',
     darkBg: '#0e1218'
   },
   fontSizes: {
@@ -32,16 +33,20 @@ const theme = extendTheme({
     tall: 1.7
   },
   fonts: {
-    heading:
-      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif',
     body:
-      'Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif'
+      '-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;',
+    heading:
+      '-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;'
   },
-
+  fontWeights: {
+    body: 400,
+    medium: 500
+  },
   components: {
     Heading: {
       baseStyle: {
-        letterSpacing: 'tight'
+        letterSpacing: 'tight',
+        fontWeight: 800
       },
       sizes: {
         '3xl': {
@@ -62,7 +67,7 @@ const theme = extendTheme({
         md: {
           fontSize: ['lg', 'xl', '2xl'],
           lineHeight: 'base',
-          fontWeight: 600
+          fontWeight: 700
         }
       }
     }

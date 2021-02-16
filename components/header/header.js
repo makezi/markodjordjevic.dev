@@ -34,8 +34,6 @@ function useActiveLink(href) {
 }
 
 function NavLink({ href, ...props }) {
-  const activeColor = useColorModeValue('gray.800', 'gray.300');
-  const activeBg = useColorModeValue('gray.100', 'whiteAlpha.200');
   const isActiveLink = useActiveLink(href);
 
   return (
@@ -44,14 +42,11 @@ function NavLink({ href, ...props }) {
         as="a"
         href={href}
         variant="ghost"
-        fontFamily="heading"
         fontSize={['xl', 'xl', 'lg']}
         width={['100%', '100%', 'auto']}
-        fontWeight="medium"
-        letterSpacing="-1px"
-        color={isActiveLink ? activeColor : 'gray.500'}
-        bg={isActiveLink ? activeBg : 'transparent'}
-        _hover={{ color: activeColor, bg: activeBg }}
+        color={isActiveLink && 'gray.100'}
+        bg={isActiveLink ? 'primary' : 'transparent'}
+        _hover={{ color: 'gray.100', bg: 'primary' }}
         {...props}
       />
     </NextLink>
@@ -60,18 +55,22 @@ function NavLink({ href, ...props }) {
 
 function ToggleColorModeButton() {
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <header>
-      <IconButton onClick={toggleColorMode} p={2} aria-label="Toggle Dark Mode">
-        <Text fontSize="2xl">
-          {colorMode === 'light' ? (
-            <HiOutlineMoon size={30} />
-          ) : (
-            <HiMoon size={30} />
-          )}
-        </Text>
-      </IconButton>
-    </header>
+    <IconButton
+      onClick={toggleColorMode}
+      p={2}
+      aria-label="Toggle Dark Mode"
+      _hover={{ color: 'gray.100', bg: 'primary' }}
+    >
+      <Text fontSize="2xl">
+        {colorMode === 'light' ? (
+          <HiOutlineMoon size={30} />
+        ) : (
+          <HiMoon size={30} />
+        )}
+      </Text>
+    </IconButton>
   );
 }
 

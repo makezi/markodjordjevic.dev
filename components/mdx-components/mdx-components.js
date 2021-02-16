@@ -29,14 +29,7 @@ function InlineCode(props) {
 }
 
 function AnchorLink(props) {
-  return (
-    <Link
-      color="blue.400"
-      textDecoration="underline"
-      fontWeight="medium"
-      {...props}
-    />
-  );
+  return <Link color="#F43F5E" fontWeight="medium" {...props} />;
 }
 
 function MyOrderedList(props) {

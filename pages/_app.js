@@ -1,5 +1,3 @@
-import '@/styles/global.css';
-
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { MDXProvider } from '@mdx-js/react';
 import { Global, css } from '@emotion/react';
