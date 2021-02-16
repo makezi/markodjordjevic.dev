@@ -26,7 +26,7 @@ export default css`
   pre[class*='language-'] {
     padding: ${theme.space[4]};
     overflow: auto;
-    margin: ${theme.space[10]} -20px;
+    margin: ${theme.space[10]} 0;
     min-width: 100%;
     white-space: nowrap;
 
