@@ -13,11 +13,11 @@ function Title(props) {
 }
 
 function SectionHeading(props) {
-  return <Heading as="h2" size="lg" mb={6} mt={14} {...props} />;
+  return <Heading as="h2" size="xl" mb={6} mt={14} {...props} />;
 }
 
 function SubSectionHeading(props) {
-  return <Heading as="h3" size="md" {...props} />;
+  return <Heading as="h3" size="lg" {...props} />;
 }
 
 function Paragraph(props) {

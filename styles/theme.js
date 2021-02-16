@@ -1,21 +1,21 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, theme as baseTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 const theme = extendTheme({
   styles: {
     global: (props) => ({
       'html, body': {
-        fontSize: ['md', 'lg'],
+        fontSize: 'lg',
         fontWeight: 'body',
         lineHeight: 'tall',
-        color: mode('gray.700', 'gray.300')(props),
+        color: mode('gray.700', 'gray.400')(props),
         bg: mode('white', 'darkBg')(props)
       }
     })
   },
   colors: {
     primary: '#f43f5e',
-    darkBg: '#0e1218'
+    darkBg: `${baseTheme.colors.gray[900]}`
   },
   fontSizes: {
     xs: 12,
@@ -44,10 +44,10 @@ const theme = extendTheme({
   },
   components: {
     Heading: {
-      baseStyle: {
-        letterSpacing: 'tight',
-        fontWeight: 800
-      },
+      baseStyle: (props) => ({
+        fontWeight: 800,
+        color: mode('gray.800', 'gray.100')(props)
+      }),
       sizes: {
         '3xl': {
           fontSize: ['4xl', '5xl', '6xl'],

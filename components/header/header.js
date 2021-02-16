@@ -157,7 +157,7 @@ function Header() {
       position="sticky"
       top={0}
       zIndex="sticky"
-      sx={{ backdropFilter: 'blur(10px)' }}
+      sx={{ backdropFilter: 'blur(20px)' }}
       bg={bg}
     >
       <Container
@@ -168,7 +168,7 @@ function Header() {
         width="100%"
         alignItems="center"
       >
-        <Heading size="md" as="h1">
+        <Heading size="lg" as="h1">
           Marko Djordjevic
         </Heading>
         <Spacer />
